@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <mpi.h>
+#include <mpi/mpi.h>
+
+#include "dummy.h"
 
 int main(int argc, char **argv)
 {
@@ -18,6 +20,8 @@ int main(int argc, char **argv)
 
     if (rank == 0)
         printf("Grid: %d %d\n", dims[0], dims[1]);
+
+    cuda_foo();
 
     MPI_Finalize();
 

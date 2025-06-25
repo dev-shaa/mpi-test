@@ -1,5 +1,11 @@
-all: compile
+all: compile clean
 
-compile:
+compile: cuda
 	mkdir -p bin
-	mpicc main.c -o bin/main
+	mpicc main.c dummy.o -o bin/main -lcudart
+
+cuda:
+	nvcc -c dummy.cu -o dummy.o
+
+clean:
+	rm dummy.o
